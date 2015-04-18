@@ -1,6 +1,8 @@
 # Start with: shotgun -I. -Ilib
 # Under Windows: rackup -I. -Ilib  (CTRL+C and restart on each change)
 
+require "logger"
+
 Routes = {
   "GET" => {},
   "POST" => {}
@@ -20,6 +22,7 @@ def get(path, &block)
   Routes["GET"][path] = block
 end
 
+use Logger
 run App.new
 
 #### Sinatra ####
